@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Risk Management System</title>
+  <link rel="stylesheet" href="assets/css/shared-components.css">
+  <link rel="stylesheet" href="assets/css/global-dashboard.css">
+  <link rel="stylesheet" href="assets/css/patient-dashboard.css">
+  <link rel="icon" href="../welldoc.png">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval'; connect-src 'self';">
+  <meta name="description" content="Synthetic medical AI risk predictor with FDA-compliant rules and ensemble learning.">
+  <meta name="theme-color" content="#007bff">
+</head>
+<body>
+  <noscript>This application requires JavaScript to run.</noscript>
+  <div id="app" class="dashboard">
+    <div class="app-header">
+      <h1>Medical Risk Management System</h1>
+      <div class="view-toggle">
+        <button id="globalViewBtn" class="btn primary">Global Dashboard</button>
+        <button id="patientViewBtn" class="btn">Patient Dashboard</button>
+        <input id="patientIdInput" placeholder="Patient ID (e.g., P-000123)" aria-label="Patient ID"/>
+        <button id="loadPatientBtn" class="btn">Load</button>
+      </div>
+    </div>
+    <div id="content"></div>
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/medical-rules.js"></script>
+  <script src="assets/js/feature-engine.js"></script>
+  <script src="assets/js/ensemble-models.js"></script>
+  <script src="assets/js/data-generator.js"></script>
+  <script src="assets/js/global-dashboard.js"></script>
+  <script src="assets/js/patient-dashboard.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
+

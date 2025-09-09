@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welldoc | Global Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f7faff; }
+    .topbar { background: #fff; padding: 12px 20px; border-bottom: 1px solid #ddd; display: flex; align-items: center; justify-content: space-between; }
+    .card { border-radius: 16px; box-shadow: 0px 4px 10px rgba(0,0,0,0.05); }
+    img { width: 100%; border-radius: 5px; }
+    h6 { background-color: #002b7f; color: white; text-align: center; padding: 10px 20px; border-radius: 15px; font-size: 1.1rem; font-weight: 500; display: block; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h4 class="m-0">Cohort Analytics</h4>
+    <div>
+      <a href="login.html" class="btn btn-outline-secondary btn-sm">Back</a>
+      <a href="dashboard.html" class="btn btn-primary btn-sm">Local (Patient) View</a>
+    </div>
+  </div>
+
+  <div class="container py-3">
+    <div class="row g-3">
+      <!-- Population Summary -->
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>Population Summary</h6>
+          <div class="table-responsive">
+            <table class="table table-sm table-bordered">
+              <thead class="table-light">
+                <tr><th>Metric</th><th>Value</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Total Patients</td><td>15000</td></tr>
+                <tr><td>Average Age</td><td>57.02</td></tr>
+                <tr><td>Male Patients</td><td>7231</td></tr>
+                <tr><td>Female Patients</td><td>7769</td></tr>
+                <tr><td>Diabetes Prevalence</td><td>0.28</td></tr>
+                <tr><td>Hypertension Prevalence</td><td>0.54</td></tr>
+                <tr><td>CKD Prevalence</td><td>0.04</td></tr>
+                <tr><td>Heart Failure Prevalence</td><td>0.03</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bayesian Risk Assessment -->
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>Bayesian Risk Assessment Summary</h6>
+          <div class="table-responsive">
+            <table class="table table-sm table-bordered">
+              <thead class="table-light">
+                <tr>
+                  <th>Condition</th>
+                  <th>P(High Risk | Condition)</th>
+                  <th>P(High Risk | No Condition)</th>
+                  <th>Likelihood Ratio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Diabetes</td><td>0.397</td><td>0.180</td><td>2.204</td></tr>
+                <tr><td>Hypertension</td><td>0.409</td><td>0.234</td><td>1.746</td></tr>
+                <tr><td>CKD</td><td>0.507</td><td>0.229</td><td>2.211</td></tr>
+                <tr><td>Heart Failure</td><td>0.357</td><td>0.102</td><td>3.491</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk Distribution + Risk Trend -->
+    <div class="row g-3 mt-1">
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>Risk Distribution</h6>
+          <img src="img/risk_analysis.jpeg" alt="Risk Distribution">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>Risk Trend (6 Months)</h6>
+          <img src="img/risk_trend_6_months.jpeg" alt="Risk Trend">
+        </div>
+      </div>
+    </div>
+
+    <!-- Biomarker Box Plots + Risk Trajectory -->
+    <div class="row g-3 mt-1">
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>Biomarker Box Plots</h6>
+          <img src="img/biomarker_box_plots.jpeg" alt="Biomarker Box Plots">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>Risk Trajectory (3 mo vs Now)</h6>
+          <img src="img/risk_trajectory.jpeg" alt="Risk Trajectory">
+        </div>
+      </div>
+    </div>
+
+    <!-- Heatmap + Sunburst -->
+    <div class="row g-3 mt-1">
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>Condition-Specific Risk Heatmap</h6>
+          <img src="img/condition_heatmap.jpeg" alt="Condition Heatmap">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h6>Resource Allocation Sunburst (Approximation)</h6>
+          <img src="img/sunburst.jpeg" alt="Resource Allocation">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

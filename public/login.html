@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welldoc Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header id="main-header">
+    <div class="container d-flex justify-content-between align-items-center">
+      <img src="welldoc.png" alt="Welldoc Logo" class="logo">
+      <nav>
+        <a href="#">Sign In</a>
+        <a href="#">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login Section -->
+  <section class="login-section">
+    <div class="login-card">
+      <h3>Welcome to Welldoc</h3>
+      <p class="tagline">Transforming population health</p>
+
+      <!-- Google Sign-in -->
+      <button class="google-btn">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
+        Sign in with Google
+      </button>
+
+      <!-- Username/password login -->
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <input type="text" name="username" class="form-control" placeholder="Username" required>
+        </div>
+        <div class="mb-3">
+          <input type="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+
+      <div class="signup-text">
+        <p>New to Welldoc? <a href="#">Sign up for free</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Updated Unlock Section -->
+<section class="unlock-section">
+    <div class="container d-flex align-items-center justify-content-between">
+        <!-- Left Content -->
+        <div class="unlock-content">
+            <h2>Unlock Your Health Predictions</h2>
+            <p>Track trends, analyze patient data, and access your personalized dashboard.</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <h2 id="patients">500</h2>
+                    <p>Patients Helped</p>
+                </div>
+                <div class="stat">
+                    <h2 id="trends">120</h2>
+                    <p>Trends Analyzed</p>
+                </div>
+                <div class="stat">
+                    <h2 id="publications">45</h2>
+                    <p>Publications</p>
+                </div>
+            </div>
+
+            <!-- Simple Dashboard Button -->
+            <div class="d-flex gap-2 mt-4">
+              <a href="dashboard.html" class="btn btn-light">Local (Patient) View</a>
+              <a href="global-dashboard.html" class="btn btn-outline-light">Global (Clinical) View</a>
+            </div>
+        </div>
+        <!-- Right Image with White Phone -->
+        <div class="phone-preview">
+            <img src="phone_pre.webp" alt="App Preview" class="phone-image" style="
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            height: auto;
+            ">
+        </div>
+        </div>
+    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll(".unlock-section .stat h2");
+        const duration = 4000; // 4 seconds
+      
+        counters.forEach(counter => {
+          const target = +counter.textContent; // use textContent instead of innerText
+          let start = 0;
+          const increment = Math.max(1, target / (duration / 16)); // ensure increment ≥ 1
+      
+          const updateCounter = () => {
+            start += increment;
+            if (start < target) {
+              counter.textContent = Math.ceil(start);
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target; // exact final number
+            }
+          };
+      
+          counter.textContent = "0"; // reset to 0
+          updateCounter();
+        });
+      });
+      </script>
+      
+
+  <!-- ✅ Solutions Section -->
+  <section class="solutions-section">
+    <div class="container text-center">
+      <h2>Together, we can transform healthcare</h2>
+      <p>We’re making digital health easier with the scale and flexibility to fit any care model.</p>
+
+      <div class="solutions-grid">
+        <div class="solution-card">
+          <img src="health_insurance.jpeg" alt="Health Plans">
+          <h3>HEALTH PLANS</h3>
+          <p>Support chronic care for your members with quality services while saving time, cost, and resources.</p>
+        </div>
+        <div class="solution-card">
+          <img src="Health_system.webp" alt="Healthcare Systems">
+          <h3>HEALTH SYSTEMS</h3>
+          <p>Optimize and scale care delivery, ensuring consistency without adding complexity.</p>
+        </div>
+        <div class="solution-card">
+          <img src="employers.jpg" alt="Employers">
+          <h3>EMPLOYERS</h3>
+          <p>Empower employees with cost-effective health options and ensure workplace well-being.</p>
+        </div>
+        <div class="solution-card">
+          <img src="healthcare_businesspartners.jpg" alt="Partners">
+          <h3>PARTNERS</h3>
+          <p>Unleash innovation, scale solutions, and build the next generation of healthcare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <h5 class="text-center mb-4">Frequently Asked Questions</h5>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+              What is Welldoc?
+            </button>
+          </h2>
+          <div id="q1" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              Welldoc provides clinically proven digital health solutions for chronic disease management.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+              Is my data safe?
+            </button>
+          </h2>
+          <div id="q2" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              Yes, all patient data is HIPAA-compliant and securely managed.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Header color change
+    window.addEventListener("scroll", function() {
+      const header = document.getElementById("main-header");
+      header.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    // Login box transition on scroll
+    window.addEventListener("scroll", function() {
+      const loginCard = document.querySelector(".login-card");
+      if (window.scrollY > 100) {
+        loginCard.classList.add("slide-left");
+      } else {
+        loginCard.classList.remove("slide-left");
+      }
+    });
+
+    // Stats counter animation
+    function animateCounter(id, target) {
+      let count = 0;
+      const step = Math.ceil(target / 100); // smoother animation
+      const interval = setInterval(() => {
+        if (count < target) {
+          count += step;
+          if (count > target) count = target;
+          document.getElementById(id).innerText = count;
+        } else {
+          clearInterval(interval);
+        }
+      }, 30);
+    }
+
+    window.addEventListener("scroll", function() {
+      const stats = document.querySelector(".stats");
+      const rect = stats.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        animateCounter("patients", 500);
+        animateCounter("trends", 120);
+        animateCounter("publications", 45);
+      }
+    }, { once: true });
+
+    // Redirect to Medical Risk Dashboard on login
+    (function(){
+      const form = document.querySelector('form[action="/login"]');
+      if (form) {
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          window.location.href = 'dashboard.html';
+        });
+      }
+      const googleBtn = document.querySelector('.google-btn');
+      if (googleBtn) {
+        googleBtn.addEventListener('click', function(){
+          window.location.href = 'dashboard.html';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

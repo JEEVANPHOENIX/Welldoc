@@ -1,0 +1,18 @@
+.global-dashboard .dashboard-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.summary-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.summary-card { padding: 1rem; border-radius: 12px; color: #fff; box-shadow: var(--shadow-strong); }
+.summary-card.critical { background: var(--medical-red); }
+.summary-card.high { background: var(--medical-orange); }
+.summary-card.moderate { background: var(--medical-yellow); color: #333; }
+.summary-card.low { background: var(--medical-green); }
+.summary-card h3 { margin: 0 0 0.25rem 0; font-size: 1rem; }
+.summary-card .count { font-size: 1.6rem; font-weight: 700; }
+.summary-card .percentage { opacity: 0.9; }
+
+.controls-panel { margin: 1rem 0; }
+.patient-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.patient-card { background: #fff; border-radius: 12px; box-shadow: var(--shadow-subtle); padding: 1rem; }
+.patient-card .id { font-weight: 700; }
+
+.analytics-section { margin-top: 1rem; }
+

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welldoc | Dashboard</title>
+  <link rel="icon" href="welldoc" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <!-- Risk engines and bridge -->
+  <script src="medical_risk_predictor/assets/js/utils.js"></script>
+  <script src="medical_risk_predictor/assets/js/feature-engine.js"></script>
+  <script src="medical_risk_predictor/assets/js/medical-rules.js"></script>
+  <script src="medical_risk_predictor/assets/js/ensemble-models.js"></script>
+  <script src="medical_risk_predictor/assets/js/data-generator.js"></script>
+  <script src="js/bayes-engine.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f7faff; }
+    .sidebar { background: #0b3382; color: #fff; min-height: 100vh; padding-top: 1rem; }
+    .sidebar a { color: #fff; text-decoration: none; display: block; padding: 12px 20px; border-radius: 8px; margin: 4px 0; cursor: pointer; }
+    .sidebar a.active, .sidebar a:hover { background: #1a5f7a; }
+    .topbar { background: #fff; padding: 12px 20px; border-bottom: 1px solid #ddd; display: flex; align-items: center; justify-content: space-between; }
+    .card { border-radius: 16px; box-shadow: 0px 4px 10px rgba(0,0,0,0.05); }
+    .vital-card { text-align: center; padding: 16px; }
+    .vital-value { font-size: 28px; font-weight: bold; }
+    .chart-container { height: 260px; }
+    .patient-photo { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 15px auto; display: block; }
+    .main-page { display: none; padding: 20px; animation: fadeIn 0.8s ease-in-out; }
+    h5 { background-color: #002b7f; color: white; text-align: center; padding: 10px 20px; border-radius: 15px; font-size: 1.1rem; font-weight: 500; display: inline-block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar p-3">
+      <h4 class="mb-4">Welldoc</h4>
+      <a class="active" data-target="dashboardPage"><i class="bi bi-speedometer2 me-2"></i> Overview</a>
+      <a data-target="recommendationPage"><i class="bi bi-lightbulb me-2"></i> Recommendations</a>
+      <a data-target="historyPage"><i class="bi bi-journal-text me-2"></i> Medical History</a>
+      <a data-target="predictionPage"><i class="bi bi-graph-up me-2"></i> Prediction Table</a>
+      <a data-target="settingsPage"><i class="bi bi-gear me-2"></i> Settings</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-grow-1">
+      <!-- Header -->
+      <div class="topbar">
+        <input type="text" class="form-control w-50" placeholder="Search patient ID or name">
+        <div>
+          <span class="me-3">Dashboard</span>
+          <strong>Consulted Doctor: Dr. Verma</strong>
+        </div>
+      </div>
+
+      <!-- Dashboard Page -->
+      <div id="dashboardPage" class="main-page">
+        <div class="row g-3">
+          <!-- Patient Profile -->
+          <div class="col-md-3">
+            <div class="card p-3 box">
+              <h5>Patient Profile</h5>
+              <img src="patient_image.webp" class="patient-photo" alt="Patient Photo">
+              <p><strong>Name:</strong> Jeevan Jyoti Dash</p>
+              <p><strong>Age:</strong> 22</p>
+              <p><strong>Gender:</strong> Male</p>
+              <p><strong>ID:</strong> #10245</p>
+              <p><strong>Risks:</strong> Hypertension, Diabetes</p>
+            </div>
+          </div>
+          <!-- Vital Signs -->
+          <div class="col-md-9">
+            <div class="row g-3">
+              <div class="col-md-3">
+                <div class="card vital-card box">
+                  <h6>Blood Sugar</h6>
+                  <div class="vital-value text-danger">125</div>
+                  <small>mg/dL</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card vital-card box">
+                  <h6>Heart Rate</h6>
+                  <div class="vital-value text-primary">78</div>
+                  <small>BPM</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card vital-card box">
+                  <h6>Blood Pressure</h6>
+                  <div class="vital-value text-success">120/80</div>
+                  <small>mmHg</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card vital-card box">
+                  <h6>Hemoglobin</h6>
+                  <div class="vital-value text-warning">14</div>
+                  <small>g/dL</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Health Reports & Medical History -->
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <div class="card p-3 box">
+              <h5>Health Reports</h5>
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between">Blood Count Report <span>5MB</span></li>
+                <li class="list-group-item d-flex justify-content-between">ECG Report <span>10MB</span></li>
+                <li class="list-group-item d-flex justify-content-between">MRI Report <span>25MB</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-3 box">
+              <h5>Medical History</h5>
+              <ul>
+                <li>Covid-19 – Dr. A</li>
+                <li>Appendicitis Surgery – Dr. B</li>
+                <li>Ankle Fracture – Dr. C</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Tests & Statistics -->
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <div class="card p-3 box">
+              <h5>Upcoming Tests</h5>
+              <ul>
+                <li>ECG Test – 20/09/25</li>
+                <li>Blood Test – 30/09/25</li>
+                <li>Urine Test – 01/10/25</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-3 box">
+              <h5>Statistics</h5>
+              <div class="chart-container">
+                <canvas id="mainLineChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extra Charts Row -->
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <div class="card p-3 box">
+              <h5>Health Radar</h5>
+              <div class="chart-container">
+                <canvas id="radarChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-3 box">
+              <h5>Blood Sugar (Time Series)</h5>
+              <div class="chart-container">
+                <canvas id="timeSeriesChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optional More Charts -->
+        <div class="row g-3 mt-2">
+          <div class="col-md-6">
+            <div class="card p-3 box">
+              <h5>Risk Gauge</h5>
+              <div class="chart-container">
+                <canvas id="gaugeChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-3 box">
+              <h5>Lab Results</h5>
+              <div class="chart-container">
+                <canvas id="stackedBarChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation Page -->
+      <div id="recommendationPage" class="main-page">
+        <h3>AI & Doctor Recommendations</h3>
+        <!-- AI Recommendation -->
+        <div class="card p-3 my-3">
+          <h5>AI Recommendation</h5>
+          <p>Based on recent glucose level (125 mg/dL), AI suggests monitoring diet and scheduling a follow-up test in 2 weeks.</p>
+          <small class="text-muted">Reason: Elevated glucose level compared to normal range (70–100 mg/dL).</small>
+          <div class="chart-container mt-3"><canvas id="aiBarChart"></canvas></div>
+        </div>
+        <!-- Doctor Recommendation -->
+        <div class="card p-3 my-3">
+          <h5>Doctor's Recommendation</h5>
+          <p>Dr. Verma recommends reducing sugar intake, adding 30 minutes of daily exercise, and checking blood sugar twice weekly.</p>
+          <div class="chart-container mt-3"><canvas id="doctorPieChart"></canvas></div>
+        </div>
+        <!-- Risk Assessment -->
+        <div class="card p-3 my-3">
+          <h5>Risk Assessment</h5>
+          <p>Risk data suggests possible pre-diabetic state due to consistent blood sugar >120 mg/dL across last 3 reports.</p>
+          <div class="chart-container mt-3"><canvas id="riskLineChart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Medical History Page -->
+      <div id="historyPage" class="main-page">
+        <h3>Medical History</h3>
+        <div class="card p-3 box">
+          <div class="table-responsive">
+            <table class="table table-sm" id="historyTable">
+              <thead>
+                <tr><th>Date</th><th>Event</th><th>Notes</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>12/05/2024</td><td>Annual Checkup</td><td>All vitals normal, mild fatigue reported</td></tr>
+                <tr><td>22/09/2024</td><td>Blood Test</td><td>Glucose slightly elevated</td></tr>
+                <tr><td>05/01/2025</td><td>ECG</td><td>Normal rhythm, no abnormalities</td></tr>
+                <tr><td>15/07/2025</td><td>Consultation</td><td>Prescribed low-sugar diet, light exercise</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prediction Page -->
+      <div id="predictionPage" class="main-page">
+        <h3>Prediction Table</h3>
+        <div class="card p-3 box">
+          <div class="table-responsive">
+            <table class="table table-sm" id="predictionTable">
+              <thead>
+                <tr><th>Model</th><th>Low</th><th>Moderate</th><th>High</th><th>Critical</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Bayesian Risk Engine</td><td>35%</td><td>40%</td><td>20%</td><td>5%</td></tr>
+                <tr><td>Ensemble Gradient Boost</td><td>28%</td><td>45%</td><td>22%</td><td>5%</td></tr>
+                <tr><td>Neural Predictor v2</td><td>30%</td><td>42%</td><td>23%</td><td>5%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <small class="text-muted">Values represent predicted risk category distribution over next 90 days.</small>
+        </div>
+      </div>
+
+      <!-- Settings Page -->
+      <div id="settingsPage" class="main-page">
+        <h3>Settings</h3>
+        <div class="card p-3 box">
+          <h5>User Preferences</h5>
+          <form id="settingsForm">
+            <div class="mb-3">
+              <label class="form-label">Notification Preference</label>
+              <select class="form-select" id="notifPref">
+                <option value="email" selected>Email</option>
+                <option value="sms">SMS</option>
+                <option value="app">In-App Only</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Dashboard Theme</label>
+              <select class="form-select" id="themePref">
+                <option value="light" selected>Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Settings</button>
+          </form>
+          <div id="settingsMsg" class="mt-3 text-success" style="display:none;">
+            ✅ Settings saved successfully!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="welldoc-charts.js"></script>
+  <script src="js/dashboard-bridge.js"></script>
+  <script>
+    // Show dashboard page by default
+    document.getElementById('dashboardPage').style.display = 'block';
+
+    // Sidebar navigation with animation
+    const links = document.querySelectorAll(".sidebar a");
+    const pages = document.querySelectorAll(".main-page");
+
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        const targetId = link.getAttribute("data-target");
+        if (!targetId) return;
+        pages.forEach(p => p.style.display = "none");
+        const targetPage = document.getElementById(targetId);
+        targetPage.style.display = "block";
+        anime({
+          targets: "#" + targetId,
+          opacity: [0, 1],
+          translateY: [30, 0],
+          duration: 800,
+          easing: "easeOutExpo"
+        });
+        // Update active link style
+        links.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    // Fake Settings Save
+    document.getElementById("settingsForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("settingsMsg").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("settingsMsg").style.display = "none";
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Web framework
+Flask==3.0.3
+
+# For handling sessions and APIs
+Flask-Session==0.5.0
+Flask-Cors==4.0.0
+
+# Data science / ML prep (future integration)
+numpy==1.26.0
+pandas==2.2.2
+scikit-learn==1.5.1
+
+# Visualization (Python side, optional)
+matplotlib==3.8.4
+seaborn==0.13.2
+plotly==5.22.0
+
+# For working with JSON APIs
+requests==2.32.3
+imbalanced-learn==0.12.3
+lightgbm==4.5.0
+xgboost==2.1.1
+shap==0.45.1
+lime==0.2.0.1

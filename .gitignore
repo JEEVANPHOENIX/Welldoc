@@ -1,0 +1,12 @@
+.vscode
+myenv
+myenv/
+node_modules
+dist
+.DS_Store
+*.log
+*.tmp
+.env
+*.bak
+*.swp
+.idea

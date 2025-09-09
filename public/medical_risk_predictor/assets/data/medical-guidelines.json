@@ -1,0 +1,38 @@
+{
+  "blood_pressure": {
+    "normal": { "systolic": [0, 120], "diastolic": [0, 80] },
+    "elevated": { "systolic": [120, 129], "diastolic": [0, 80] },
+    "stage1_htn": { "systolic": [130, 139], "diastolic": [80, 89] },
+    "stage2_htn": { "systolic": [140, 999], "diastolic": [90, 999] }
+  },
+  "diabetes": {
+    "normal_hba1c": [0, 5.7],
+    "prediabetes_hba1c": [5.7, 6.5],
+    "diabetes_hba1c": [6.5, 15],
+    "target_hba1c": 7.0,
+    "high_risk_hba1c": 9.0
+  },
+  "heart_failure": {
+    "reduced_ef": [0, 40],
+    "mid_range_ef": [41, 49],
+    "preserved_ef": [50, 100],
+    "elevated_bnp": 400,
+    "critical_bnp": 1000
+  },
+  "kidney": {
+    "normal_egfr": [90, 999],
+    "mild_decrease": [60, 89],
+    "moderate_decrease": [30, 59],
+    "severe_decrease": [15, 29],
+    "kidney_failure": [0, 14]
+  },
+  "obesity": {
+    "underweight": [0, 18.5],
+    "normal": [18.5, 25],
+    "overweight": [25, 30],
+    "obese_class1": [30, 35],
+    "obese_class2": [35, 40],
+    "obese_class3": [40, 999]
+  }
+}
+

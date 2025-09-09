@@ -1,0 +1,48 @@
+:root {
+  --medical-red: #dc3545;
+  --medical-orange: #fd7e14;
+  --medical-yellow: #ffc107;
+  --medical-green: #28a745;
+  --medical-blue: #007bff;
+  --medical-dark: #212529;
+  --medical-light: #f8f9fa;
+  --shadow-subtle: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-strong: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.dashboard {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 2rem;
+  color: #111;
+}
+
+.app-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.app-header h1 { color: #fff; margin: 0; font-weight: 700; }
+.view-toggle { display: flex; gap: 0.5rem; align-items: center; }
+.view-toggle input { padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid #ccc; }
+
+.btn { padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); background: #fff; cursor: pointer; box-shadow: var(--shadow-subtle); }
+.btn.primary { background: var(--medical-blue); color: #fff; border-color: transparent; }
+.btn:hover { filter: brightness(0.98); }
+
+.risk-indicator { padding: 0.35rem 0.6rem; border-radius: 6px; font-weight: 600; text-align: center; display: inline-block; }
+.risk-critical { background: var(--medical-red); color: white; }
+.risk-high { background: var(--medical-orange); color: white; }
+.risk-moderate { background: var(--medical-yellow); color: #333; }
+.risk-low { background: var(--medical-green); color: white; }
+
+.card { background: #fff; border-radius: 12px; box-shadow: var(--shadow-strong); padding: 1rem; }
+.grid { display: grid; gap: 1rem; }
+.grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+@media (max-width: 900px) {
+  .grid.three, .grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .grid.two, .grid.three, .grid.four { grid-template-columns: 1fr; }
+}
+

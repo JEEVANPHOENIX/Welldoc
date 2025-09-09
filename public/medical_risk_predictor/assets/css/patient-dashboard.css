@@ -1,0 +1,21 @@
+.patient-dashboard .patient-header { display: flex; gap: 1rem; align-items: stretch; margin-bottom: 1rem; }
+.patient-info { flex: 1; }
+.risk-assessment { width: 360px; }
+.dashboard-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; }
+.clinical-rules .rule-item { border-left: 6px solid transparent; padding: 0.5rem 0.75rem; margin-bottom: 0.5rem; border-radius: 8px; background: #fff; box-shadow: var(--shadow-subtle); }
+.clinical-rules .rule-item.critical { border-color: var(--medical-red); }
+.clinical-rules .rule-item.high { border-color: var(--medical-orange); }
+.clinical-rules .rule-item.moderate { border-color: var(--medical-yellow); }
+
+.probability-bar { display: flex; height: 10px; border-radius: 6px; overflow: hidden; background: #eee; }
+.prob-segment.critical { background: var(--medical-red); }
+.prob-segment.high { background: var(--medical-orange); }
+.prob-segment.moderate { background: var(--medical-yellow); }
+.prob-segment.low { background: var(--medical-green); }
+
+@media (max-width: 960px) {
+  .patient-dashboard .patient-header { flex-direction: column; }
+  .risk-assessment { width: auto; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+}
+
