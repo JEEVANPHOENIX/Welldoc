@@ -20,7 +20,8 @@ Welldoc is a comprehensive healthcare dashboard and data management platform des
 
 ## Demo
 
-![Dashboard Screenshot](public/background.png)
+<img width="1032" height="578" alt="preview" src="https://github.com/user-attachments/assets/afd5bf4c-7d7b-4e21-a5f0-20b181a224c4" />
+
 
 ## Getting Started
 
