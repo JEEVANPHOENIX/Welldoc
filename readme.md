@@ -1,3 +1,5 @@
+
+
 # Welldoc
 
 [![License](https://img.shields.io/github/license/JEEVANPHOENIX/Welldoc)](LICENSE)
@@ -5,7 +7,14 @@
 [![Forks](https://img.shields.io/github/forks/JEEVANPHOENIX/Welldoc)](https://github.com/JEEVANPHOENIX/Welldoc/network/members)
 [![Stars](https://img.shields.io/github/stars/JEEVANPHOENIX/Welldoc)](https://github.com/JEEVANPHOENIX/Welldoc/stargazers)
 
-## Overview
+# Deployment Link 
+https://jeevanphoenix.github.io/Welldoc/public/
+```
+Username: admin  
+Password: admin@123
+```
+
+# Overview
 
 Welldoc is a comprehensive healthcare dashboard and data management platform designed to streamline medical data processing, visualization, and analytics for healthcare providers and patients.
 
